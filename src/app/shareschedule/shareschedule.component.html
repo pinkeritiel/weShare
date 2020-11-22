@@ -1,0 +1,42 @@
+ <div class="row">
+   <div class="col">
+    <button class="btn btn-basic btn-sm" type="button" (click)="mailtable()">
+           
+           <span class="glyphicon glyphicon-envelope"></span> Mail Table
+    </button>
+ </div>
+</div>
+
+  
+    
+<div *ngIf="share" class="col-xs-6 col-md-4">
+  <table class="table table-condensed" name="schedtable">
+    <thead>
+      <tr>
+        <th class="col-md-2 col-xs-2">Date From</th>
+        <th class="col-md-2 col-xs-2">Hour From</th>
+        <th class="col-md-2 col-xs-2">Date To</th>
+        <th class="col-md-2 col-xs-2">Hour To</th>
+        <th class="col-md-2 col-xs-2">Member Name</th>
+        <th class="col-md-2 col-xs-2">Status</th>
+        <th class="col-md-2 col-xs-2">Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sched of filterSchedule; let i = index" 
+      (click)="onSelect(i)"
+      [class.highlighted]="i == selectedRow">
+        <td class="col-md-2 col-xs-2">{{ sched.DateFrom | date:'shortDate'}}</td>
+        <td class="col-md-2 col-xs-2">{{ sched.DateFrom | date:'shortTime' }}</td>
+        <td class="col-md-2 col-xs-2">{{ sched.DateTo | date:'shortDate' }}</td>
+        <td class="col-md-2 col-xs-2">{{ sched.DateTo | date:'shortTime'  }}</td>
+        <td class="col-md-2 col-xs-2">{{ sched.MemberName  }}</td>
+        <td class="col-md-2 col-xs-2">{{ sched.Status  }}</td>
+        <td class="col-md-2 col-xs-2">{{ sched.Comment  }}</td>
+        <td class="col-md-2 col-xs-2"><a [routerLink]="['/share-schedule', sched._id]">Modify Schedule</a></td>
+      </tr>
+    </tbody>
+  </table>
+ 
+</div>
+

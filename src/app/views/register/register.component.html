@@ -1,0 +1,71 @@
+  <div class="container">
+    <h6>New Member Form</h6>
+      <form (ngSubmit)="onSubmit()" #newMemberForm="ngForm">
+         <div class="form-group">
+          <label for="name" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-10">
+          <input type="text" class="form-control" id="name" 
+           required  [(ngModel)]="model.name" name="name" #name="ngModel">
+         </div>
+          <div [hidden]="name.valid || name.pristine"
+               class="alert alert-danger">Name is required
+          </div>               
+        </div>
+
+         <div class="form-group row">
+          <label for="username" class="col-sm-2 col-form-label">User Name</label>
+          <div class="col-sm-10">
+          <input type="text" class="form-control" id="username" 
+           required  [(ngModel)]="model.username" name="username" #username="ngModel">
+         </div>
+  		    <div [hidden]="username.valid || username.pristine"
+       		     class="alert alert-danger">User Name is required
+  		    </div>               
+        </div>
+
+        <div class="form-group row">
+          <label for="password" class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-10">
+          <input type="text" class="form-control" id="password"
+                 required  [(ngModel)]="model.password" name="password">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="email" class="col-sm-2 col-form-label">email</label>
+          <div class="col-sm-10">
+          <input type="text" class="form-control" id="email"
+                 [(ngModel)]="model.email" name="email">
+          </div>       
+        </div>
+
+        <div class="form-group row">
+          <label for="cellphone" class="col-sm-2 col-form-label">cellphone</label>
+          <div class="col-sm-10">
+          <input type="text" class="form-control" id="cellphone"
+                 [(ngModel)]="model.cellphone" name="cellphone">
+          </div>       
+        </div>
+  	  
+  	  <div class="form-group row">
+    		<label for="gender" class="col-sm-2 col-form-label">gender</label>
+        <div class="col-sm-10">
+    			<select class="form-control" id="gender" 
+    			               [(ngModel)]="model.gender" name="gender">
+    		    <option *ngFor="let gender of genders" [value]="gender">{{gender}}</option>  
+    			</select>
+        </div>  
+  	  </div>
+      <div [hidden]="doesNotMemberExist()"
+           class="alert alert-danger">
+           This Member already exists!
+      </div>    
+      <div [hidden]="doesNotRegistered()"
+           class="alert alert-success">
+           This Member was successfully registered!
+      </div>       
+        <button type="submit" class="btn btn-success" 
+        [disabled]="!newMemberForm.form.valid">Submit</button>
+        <button (click)="newMember(); newMemberForm.reset()" class="btn btn-default">New Member</button>
+  </form>
+

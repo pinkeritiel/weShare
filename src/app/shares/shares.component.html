@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-2 col-md-offset-2 form-group">
+     <h4>Shares List  </h4>
+   </div>
+   <div class="col-xs-4 col-xs-offset-2 col-md-offset-2 form-group">
+    <a [routerLink]="['/dashboard/share-create']" class="btn btn-default btn-sm">New Share</a>
+ </div>
+</div>
+
+
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th class="col-md-2 col-xs-2">Owner Name</th>
+        <th class="col-md-2 col-xs-2">Share Name</th>
+        <th class="col-md-2 col-xs-2">Share Description</th>
+        <th class="col-md-2 col-xs-2">Resource Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let share of shareList; let i = index" 
+      (click)="onSelect(i)"
+      [class.highlighted]="i == selectedRow">
+      <td class="col-md-2 col-xs-2">{{ share.OwnerName }}</td>
+      <td class="col-md-2 col-xs-2">{{ share.ShareName  }}</td>
+      <td class="col-md-2 col-xs-2">{{ share.ShareDescription  }}</td>
+      <td class="col-md-2 col-xs-2">{{ share.ResourceType  }}</td>
+      <td class="col-md-2 col-xs-2"><a [routerLink]="['./share-details', share._id]" *ngIf="share._id">Show Details</a></td>
+    </tr>
+  </tbody>
+</table>
+<app-sharedetail  [share] = "selectedShare"></app-sharedetail>
+</div>
+
+<div class="container" style="overflow-y:auto; height: 300px;">
+<small>Schedule Date Picker: </small>
+  <div class="row">
+    <div class="col">
+      <div class="col-xs-4 col-xs-offset-2 col-md-offset-2 form-group" >
+          <input class="form-control input-sm" style="width:100px" placeholder="dd-mm-yyyy"
+              #dp="bsDatepicker"
+              bsDatepicker [(ngModel)]="model">
+          </div>
+          <div class="col-xs-4  form-group">
+         <button class="btn btn-success btn-sm" (click)="dp.toggle()">Date Picker
+             <img src="images/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+           </button>
+      </div>
+    <br>
+    </div>  
+  </div>  
+     
+<hr/>
+<app-shareschedule  [share] = "selectedShare" [model] = "model"></app-shareschedule>
+</div>

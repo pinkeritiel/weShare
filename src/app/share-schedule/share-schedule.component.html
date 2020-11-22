@@ -1,0 +1,72 @@
+<div class="container" style="overflow-y:auto; height: 400px;">
+	<div class="row">
+		<div class="col">
+			<p>Pick Date</p>
+		</div>	
+	</div>	
+	<div class="row">
+		<div class="col">
+	 		<div class="col-xs-4 col-xs-offset-2 col-md-offset-2 form-group" >
+		      <input class="form-control input-sm" style="width:100px" placeholder="dd-mm-yyyy"
+           		#dp="bsDatepicker"
+          		bsDatepicker [(ngModel)]="model">
+  		  	</div>
+  		  	<div class="col-xs-4  form-group">
+ 				 <button class="btn btn-success btn-sm" (click)="dp.toggle()">Date Picker
+  				   <img src="images/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+  				 </button>
+			</div>
+		<br>
+		</div>	
+	</div>	
+	<div class="row">	
+		<div class="col">
+			<p>Pick Hours</p>
+		</div>
+	</div>	
+	<div class="row">	
+		<div class="col">
+			<div class="row">
+				<timepicker [(ngModel)]="time"></timepicker>
+				<pre class="alert alert-info">Time is: {{time}}</pre>
+			</div>
+		</div>	
+	</div>	
+	<div class="row">
+		<div class="col">
+			<p>Enter hours of usage: </p>
+		</div>
+	</div>	
+	<div class="row">
+		<div class="col">
+			<div class="col-xs-2">
+				<button class="btn btn-danger btn-sm" type="button" (click)="decrement()">-</button>
+			</div>	
+			<div class="col-xs-4 col-md-4">
+				<input type="text" class="form-control inp-sm"  style="width:100px" [(ngModel)]="hours" value="1"/>
+			</div>
+			<div class="col-xs-2">
+				<button class="btn btn-success btn-sm" type="button" (click)="increment()">+</button>
+			</div>
+		</div>	
+	</div>
+
+
+	<div class="row">
+		<div class="col">
+		<div class="col-xs-5 col-md-7">
+			<alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</alert>
+		</div>
+	</div>
+	</div>    
+	<div class="row">
+		<div class="col">
+		<div  class="col-xs-4 col-xs-offset-2 col-md-offset-2 form-group">
+			<button class="btn btn-danger btn-sm" type="button" (click)="checkDateTime()">Check Date Time</button>
+		</div>
+		<div  class="col-xs-4 col-xs-offset-2 col-md-offset-2 form-group">
+			<button class="btn btn-danger btn-sm" type="button" (click)="selectDateTime()">Select Date Time</button>
+		</div>
+	</div>
+	</div>
+</div>

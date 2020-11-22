@@ -1,0 +1,7 @@
+<footer class="footer">
+	<div class="container">
+		<button type="button" (click)="goBack()" *ngIf="currentId" class="btn btn-default btn-sm">Back</button>
+		 <small style="color:blue"> User: {{currentUser}}</small>
+		<a [routerLink]="['/profile']" *ngIf="currentId" class="btn btn-link">Profile</a>
+	</div>
+</footer>

@@ -1,0 +1,22 @@
+<div *ngIf="member" class="card text-white bg-primary mb-3" style="max-width: 100rem;">
+  <div class="card-header bg-warning">Member Details {{ member.name }}</div>
+  <div class="card-body" style="font-size:10px;">
+    <div class="row">
+    <div class="col">
+      Username: {{ member.username}}
+    </div>
+    <div class="col-6">
+      eMail: {{ member.email }}
+    </div>
+   </div>
+    <div class="row">
+    <div class="col">
+      Cell Phone: {{ member.cellphone }}
+    </div>
+    <div class="col-6">
+      Gender: {{ member.gender }}
+    </div>
+   </div>   
+  </div>
+</div> 
+ 

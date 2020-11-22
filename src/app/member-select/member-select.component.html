@@ -1,0 +1,28 @@
+ <div class="modal-header">
+ 	{{title}}
+ </div>
+ <div class="modal-body">
+ 	<div *ngIf="selectedShare" class="container">
+ 		<h1>Member List</h1>
+ 		<table class="table">
+ 			<thead>
+ 				<tr>
+ 					<th>Member Name</th>
+ 					<th>Status</th> 
+ 					<th>Status Date</th>
+ 				</tr>
+ 			</thead>
+ 			<tbody>
+ 				<tr *ngFor="let member of selectedShare.List_of_Members"
+ 				 (click)="onSelect(member)">
+ 					<td>{{ member.MemberName }}</td>
+ 					<td>{{ member.Status }}</td>
+ 					<td>{{ member.StatusDate | date:'short'  }}</td>
+ 				</tr>
+ 			</tbody>
+ 		</table>
+ 	</div>
+ </div>
+ <div class="modal-footer">
+ 	<button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
+ </div>

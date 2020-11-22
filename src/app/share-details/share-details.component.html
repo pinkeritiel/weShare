@@ -1,0 +1,33 @@
+<app-sharedetail  [share] = "selectedShare"></app-sharedetail>
+<div class="container">
+  <small>Member List</small>
+  <ng-container *ngIf="selectedShare">
+  <table  class="table table-condensed">
+    <thead>
+      <tr>
+        <th class="col-md-2 col-xs-2">Member Name</th>
+        <th class="col-md-2 col-xs-2">Status</th> 
+        <th class="col-md-2 col-xs-2">Status Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let member of selectedShare.List_of_Members">
+        <td class="col-md-2 col-xs-2">{{ member.MemberName }}</td>
+        <td class="col-md-2 col-xs-2">{{ member.Status }}</td>
+        <td class="col-md-2 col-xs-2">{{ member.StatusDate | date:'short'  }}</td>
+        <td class="col-md-2 col-xs-2"><a [routerLink]="['./share-member-details', selectedShare._id,member.Member]">Maintain</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+<div class="row">
+  <div class="col-md-12" style="font-size:10px">
+    <a [routerLink]="['./share-edit', selectedShare._id]" class="btn btn-success btn-sm">Edit</a>
+    <a [routerLink]="['./share-member', selectedShare._id]" class="btn btn-warning btn-sm">Add Member</a>
+    <a [routerLink]="['./share-schedule', selectedShare._id]" class="btn btn-info btn-sm">Schedule</a>
+    <alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</alert>   
+  </div>
+</div>
+</ng-container>
+</div>

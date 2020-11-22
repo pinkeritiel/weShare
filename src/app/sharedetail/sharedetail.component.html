@@ -1,0 +1,21 @@
+<div *ngIf="share" class="card text-white bg-primary mb-3" style="max-width: 100rem;">
+  <div class="card-header bg-warning">Share Info for {{ share.ShareName }}</div>
+  <div class="card-body" style="font-size:10px;">
+    <div class="row">
+    <div class="col">
+      Create Date: {{ share.CreateDate | date:'shortDate'}}
+    </div>
+    <div class="col-6">
+      Owner Name: {{ share.OwnerName }}
+    </div>
+   </div>
+    <div class="row">
+    <div class="col">
+      Resource Type: {{ share.ResourceType }}
+    </div>
+    <div class="col-6">
+      Description: {{ share.ShareDescription }}
+    </div>
+   </div>   
+  </div>
+</div>  
